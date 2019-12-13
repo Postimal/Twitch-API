@@ -1,0 +1,12 @@
+@import './../../styles/variables';
+
+.top-games-container {
+    background: $primary-color;
+    display: flex;
+    flex-wrap: wrap;
+    width: 60vw;
+
+    &-item {
+        background: purple;
+    }
+}
