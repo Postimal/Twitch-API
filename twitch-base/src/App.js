@@ -8,8 +8,11 @@ function App() {
   return (
     <Router>
       <Navigation />
-      <Route exact path='/' component={HomeHeader}/>
-      <Route exact path='/top-streams' component={TopStreams}/>
+      <div className="wrapper">
+        <Route exact path='/' component={HomeHeader}/>
+        <Route exact path='/top-streams' component={TopStreams}/>
+      </div>
+     
     </Router>
    
   );
