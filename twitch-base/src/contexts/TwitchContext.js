@@ -18,7 +18,6 @@ const TwitchContextProvider = props => {
       const videos = await api.get(
         "https://api.twitch.tv/helix/clips?game_id=32399&first=2"
       );
-      console.log(videos.data.data);
 
       let gamesArray = games.data.data;
       let streamsArray = streams.data.data;
@@ -30,6 +29,7 @@ const TwitchContextProvider = props => {
       setGames(games.data.data);
       setStreams(streams.data.data);
       setVideos(videos.data.data);
+
     } catch (error) {
       setError(error.message);
     }

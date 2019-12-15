@@ -1,0 +1,31 @@
+.nav-container {
+    width:90vw;
+    height: 50px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background-image: linear-gradient(260deg, rgba(180, 036, 117, 0.05) 30%,rgba(233, 105, 39, 0.10)62%, rgba(213, 40, 88, 0.06) 92%);
+    border-radius: 25px;
+    border-bottom: 3px solid;
+
+    &-app-name, &-links {
+        margin: 0;
+        background: linear-gradient(150deg, rgba(180, 136, 47, 0.84) 30%,rgba(6, 105, 39, 0.89)62%, rgba(213, 40, 88, 0.86) 92%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+    }
+
+    &-links__item {
+        margin-left:20px;
+        padding: 5px 10px;
+        text-decoration:none;
+        font-weight:bold;
+        transition: 0.2s;
+
+        &:hover {
+        -webkit-text-fill-color: #fff;}
+    }
+}
