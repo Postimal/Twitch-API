@@ -51,13 +51,14 @@ body {
       padding-top: 8px;
     }
   }
+
   .top-games-container-item:hover {
     transform: scale(1.05);
     opacity: 1;
   }
 }
 
-.top-streams-container {
+.top-streams-container,.top-video-container {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -127,13 +128,14 @@ body {
 
 .top-clips-container {
   margin-top: 40px;
-  height: 400px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  // background: rgb(131, 243, 131);
+  flex-wrap: wrap;
+
 
   &-item {
+    margin: 20px;
     height: 300px;
   }
 }

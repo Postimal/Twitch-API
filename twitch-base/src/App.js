@@ -4,16 +4,24 @@ import TwitchContextProvider from "./contexts/TwitchContext";
 import HomeHeader from "./components/HomeHeader/HomeHeader";
 import Navigation from "./components/Navigation/Navigation";
 import TopStreams from "./components/TopStreams/TopStreams";
+import TopGames from './components/TopGames/TopGames';
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <Router>
       <TwitchContextProvider>
         <Navigation />
+        <Switch>
         <div className="wrapper">
-          <Route exact path="/" component={HomeHeader} />
-          <Route exact path="/top-streams" component={TopStreams} />
+          <React.Fragment>
+            <Route exact path="/" component={HomeHeader} />
+            <Route path="/top-streams" component={TopStreams} />
+            <Route path="/top-games" component={TopGames} />
+          </React.Fragment>
         </div>
+        </Switch>
+        <Footer />
       </TwitchContextProvider>
     </Router>
   );

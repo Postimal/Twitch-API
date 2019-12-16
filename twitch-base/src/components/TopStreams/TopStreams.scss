@@ -1,0 +1,12 @@
+.load-more-button {
+    margin: 0 auto 40px;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: green;
+    background-color: transparentize($color: #a58080, $amount: 0.7);
+    cursor: pointer;
+   
+}
