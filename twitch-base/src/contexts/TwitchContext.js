@@ -7,11 +7,12 @@ export const TwitchContext = createContext();
 
 const TwitchContextProvider = props => {
   const [games, setGames] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [streams, setStreams] = useState([]);
   const [clips, setClips] = useState([]);
-  const [ss, setSs] = useState([]);
+  const [choosenStreams, setChoosenStreams] = useState([]);
 
+  const [id, setID] = useState('32399');
   const[pages, setPages] = useState(20);
 
   useEffect(() => {
@@ -20,25 +21,23 @@ const TwitchContextProvider = props => {
         const games = await api.get("https://api.twitch.tv/helix/games/top");
         const streams = await api.get(`https://api.twitch.tv/helix/streams?first=${pages}`);
         const clips = await api.get("https://api.twitch.tv/helix/clips?game_id=32399&first=4");
-        const ss = await api.get("https://api.twitch.tv/helix/streams?game_id=32399");
+        const choosenStreams = await api.get(`https://api.twitch.tv/helix/streams?game_id=${id}`);
 
-  
         let gamesArray = games.data.data;
         let streamsArray = streams.data.data;
-  
+        let choosenStreamsArray = choosenStreams.data.data;
   
         // eslint-disable-next-line
-        let finalArray = getImage(gamesArray); //getImage is imported from util.js
+        let gamesArrayWithCertainImageSize = getImage(gamesArray); //getImage is imported from util.js
         // eslint-disable-next-line
-        let secondArray = getThumbnail(streamsArray);
+        let streamsArrayWithCertainImageSize = getThumbnail(streamsArray);
         // eslint-disable-next-line
-        // let videoArrayWithCertainImageSize = getVidImage(videosArray);
-  
+        let certainStreamsArrayWithCertainImageSize = getThumbnail(choosenStreamsArray);
   
         setGames(gamesArray);
         setStreams(streamsArray);
         setClips(clips.data.data);
-        setSs(ss.data.data);
+        setChoosenStreams(choosenStreamsArray);
   
       } catch (error) {
         setError(error.message);
@@ -46,14 +45,18 @@ const TwitchContextProvider = props => {
 
     };
     fetchData();
-  }, [pages]);
+  }, [pages, id]);
 
   const fetchMoreItems = () => {
     setPages(pages + 8)
   }
 
+  const handleChangeStreamID = (id) => {
+    setID(id)
+  }
+
   return (
-    <TwitchContext.Provider value={{ games, streams, clips, pages, setError, error, fetchMoreItems}}>
+    <TwitchContext.Provider value={{ games, streams, clips, pages, error, choosenStreams, fetchMoreItems, handleChangeStreamID, id}}>
       {props.children}
     </TwitchContext.Provider>
   );

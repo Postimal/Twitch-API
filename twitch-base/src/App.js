@@ -13,13 +13,11 @@ function App() {
       <TwitchContextProvider>
         <Navigation />
         <Switch>
-        <div className="wrapper">
           <React.Fragment>
             <Route exact path="/" component={HomeHeader} />
             <Route path="/top-streams" component={TopStreams} />
             <Route path="/top-games" component={TopGames} />
           </React.Fragment>
-        </div>
         </Switch>
         <Footer />
       </TwitchContextProvider>
