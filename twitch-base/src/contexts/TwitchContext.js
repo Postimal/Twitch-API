@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-// import { twitchReducer } from "../reducers/twitchReducer";
+import React, { createContext, useEffect, useState, useReducer } from "react";
+import { twitchReducer } from "../reducers/twitchReducer";
 import api from "../api";
 import { getImage, getThumbnail} from "../utils";
 
@@ -13,15 +13,19 @@ const TwitchContextProvider = props => {
   const [choosenStreams, setChoosenStreams] = useState([]);
 
   const [id, setID] = useState('32399');
-  const[pages, setPages] = useState(20);
+  // const[pages, setPages] = useState(20);
+  const[pages, dispatch] = useReducer(twitchReducer, 20);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const games = await api.get("https://api.twitch.tv/helix/games/top");
         const streams = await api.get(`https://api.twitch.tv/helix/streams?first=${pages}`);
-        const clips = await api.get("https://api.twitch.tv/helix/clips?game_id=32399&first=4");
+        const clips = await api.get(`https://api.twitch.tv/helix/clips?game_id=${id}&first=4`);
         const choosenStreams = await api.get(`https://api.twitch.tv/helix/streams?game_id=${id}`);
+
+        // https://api.twitch.tv/helix/videos?user_id=118170488
 
         let gamesArray = games.data.data;
         let streamsArray = streams.data.data;
@@ -47,16 +51,17 @@ const TwitchContextProvider = props => {
     fetchData();
   }, [pages, id]);
 
-  const fetchMoreItems = () => {
-    setPages(pages + 8)
-  }
+  // changed it to work with using useReducer and dispatching an action
+  // const fetchMoreItems = () => {   
+  //   setPages(pages + 8)
+  // }
 
   const handleChangeStreamID = (id) => {
     setID(id)
   }
 
   return (
-    <TwitchContext.Provider value={{ games, streams, clips, pages, error, choosenStreams, fetchMoreItems, handleChangeStreamID, id}}>
+    <TwitchContext.Provider value={{ games, streams, clips, pages, error, choosenStreams, dispatch, handleChangeStreamID, id}}>
       {props.children}
     </TwitchContext.Provider>
   );

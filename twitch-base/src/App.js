@@ -17,6 +17,7 @@ function App() {
             <Route exact path="/" component={HomeHeader} />
             <Route path="/top-streams" component={TopStreams} />
             <Route path="/top-games" component={TopGames} />
+            {/* <Route path="/channel/:id" component={Channel} /> */}
           </React.Fragment>
         </Switch>
         <Footer />

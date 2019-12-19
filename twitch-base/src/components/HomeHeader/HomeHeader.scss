@@ -48,13 +48,6 @@ body {
       text-transform: uppercase;
       padding-top: 8px;
     }
-
-    &.is-active{
-      background: rgb(55, 219, 157);
-      border: 2px solid #afd6f5;
-      transform: scale(1.05);
-      opacity: 1;
-    }
   }
 
   .top-games-container-item:hover {

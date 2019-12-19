@@ -1,7 +1,7 @@
 export const twitchReducer = (state, action) => {
   switch (action.type) {
-    case "INIT": // init bede juz robil w samym context, tutaj moge sobie dodowac inne akcje
-      return setGames(action.payload);
+    case "FETCH_MORE_ITEMS": // init zrobiłem w samym context, tutaj bede sobie dodowac inne akcje
+      return state + 8;
     default:
       return state;
   }

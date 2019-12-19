@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { TwitchContext, } from "../../contexts/TwitchContext";
 import './TopGames.scss'
+import StreamList from '../StreamList/StreamList';
 
 
 const TopGames = () => {
   const {games, choosenStreams, handleChangeStreamID,id} = useContext(TwitchContext)
+
+  const findGameName = games.find(game => game.id === id)
    
     return (
-        <div>
-            {console.log(games)}
-
+        <div className="games-component">
             <h2 className="title">Most Popular Games</h2>
             <div className="top-games-container">
                 {games.slice(0, 10).map(game => (
@@ -28,33 +28,8 @@ const TopGames = () => {
                 </div>
                 ))}
             </div>
-            <div className="top-streams-container">
-                {choosenStreams.map(stream => (
-                <Link
-                    to={`/streams/${stream.id}`}
-                    className="top-streams-container-item"
-                    key={stream.id}
-                >
-                    <img
-                    className="top-streams-container-item__img"
-                    src={stream.thumbnail_url}
-                    alt="game"
-                    />
-                    <div className="top-streams-container-item__title">
-                    {stream.title}
-                    </div>
-                    <div className="top-streams-container-item__name">
-                    {stream.user_name}
-                    </div>
-                    <div className="top-streams-container-item__viewers">
-                    {stream.viewer_count} viewers
-                    </div>
-                    <div className="top-streams-container-item__live">
-                    {stream.type}
-                    </div>
-                </Link>
-                ))}
-            </div>
+                <h3 className="title">Streams of <br></br><br></br> {findGameName? findGameName.name.toUpperCase(): null}{' '}({choosenStreams.length})</h3>
+            <StreamList streams={choosenStreams}/>
         </div>
     )
 }
