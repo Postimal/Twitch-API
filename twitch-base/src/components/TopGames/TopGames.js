@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { TwitchContext, } from "../../contexts/TwitchContext";
 import './TopGames.scss'
 import StreamList from '../StreamList/StreamList';
+import ClipList from '../ClipsList/ClipsList';
 
 
 const TopGames = () => {
-  const {games, choosenStreams, handleChangeStreamID,id} = useContext(TwitchContext)
+  const {games, choosenStreams, clips, handleChangeStreamID,id} = useContext(TwitchContext)
 
   const findGameName = games.find(game => game.id === id)
    
@@ -28,8 +29,12 @@ const TopGames = () => {
                 </div>
                 ))}
             </div>
-                <h3 className="title">Streams of <br></br><br></br> {findGameName? findGameName.name.toUpperCase(): null}{' '}({choosenStreams.length})</h3>
-            <StreamList streams={choosenStreams}/>
+                <h3 className="title">Streams and Top Clips for <br></br><br></br> {findGameName? findGameName.name.toUpperCase(): null}{' '}({choosenStreams.length})</h3>
+            <div className="top-stream-and-clips-wrapper">
+                <StreamList streams={choosenStreams}/>
+                <ClipList clips={clips} height={'300'} width={'500'}/>
+            </div>
+           
         </div>
     )
 }

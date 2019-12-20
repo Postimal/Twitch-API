@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TwitchContext } from '../../contexts/TwitchContext';
 import { Link } from "react-router-dom";
 
 
 const GameList = ({games}) => {
+  const {handleChangeStreamID} = useContext(TwitchContext);
+  
     return (
         <div className="top-games-container">
+          {console.log(games)}
         {games.slice(0, 9).map(game => (
           <Link
-            to={`/game/${game.id}`}
+            to={`./top-games`}
             className="top-games-container-item"
             key={game.id}
+            onClick={()=>handleChangeStreamID(game.id)}
           >
             <img
               className="top-games-container-item__img"

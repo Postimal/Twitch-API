@@ -11,18 +11,20 @@ const TwitchContextProvider = props => {
   const [streams, setStreams] = useState([]);
   const [clips, setClips] = useState([]);
   const [choosenStreams, setChoosenStreams] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [id, setID] = useState('32399');
-  // const[pages, setPages] = useState(20);
   const[pages, dispatch] = useReducer(twitchReducer, 20);
-
 
   useEffect(() => {
     const fetchData = async () => {
+
+      setIsLoading(true);
+
       try {
         const games = await api.get("https://api.twitch.tv/helix/games/top");
         const streams = await api.get(`https://api.twitch.tv/helix/streams?first=${pages}`);
-        const clips = await api.get(`https://api.twitch.tv/helix/clips?game_id=${id}&first=4`);
+        const clips = await api.get(`https://api.twitch.tv/helix/clips?game_id=${id}&first=8`);
         const choosenStreams = await api.get(`https://api.twitch.tv/helix/streams?game_id=${id}`);
 
         // https://api.twitch.tv/helix/videos?user_id=118170488
@@ -42,8 +44,10 @@ const TwitchContextProvider = props => {
         setStreams(streamsArray);
         setClips(clips.data.data);
         setChoosenStreams(choosenStreamsArray);
+        setIsLoading(false);
   
       } catch (error) {
+        setIsLoading(false);
         setError(error.message);
       }
 
@@ -61,7 +65,7 @@ const TwitchContextProvider = props => {
   }
 
   return (
-    <TwitchContext.Provider value={{ games, streams, clips, pages, error, choosenStreams, dispatch, handleChangeStreamID, id}}>
+    <TwitchContext.Provider value={{ games, streams, clips, pages, error, choosenStreams, dispatch, handleChangeStreamID, id, isLoading}}>
       {props.children}
     </TwitchContext.Provider>
   );

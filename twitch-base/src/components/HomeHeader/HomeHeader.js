@@ -7,10 +7,18 @@ import GameList from "../GameList/GameList";
 
 
 const HomeHeader = () => {
-  const { games, streams, clips } = useContext(TwitchContext);
+  const { games, streams, clips, isLoading, error } = useContext(TwitchContext);
    // eslint-disable-next-line
-  const [length, setLength] = useState(8)
+  const [length] = useState(8)
   
+  if(isLoading) {
+    return <p>Loading...</p>
+  }
+
+  if(error) {
+  return <p>{error}</p>
+  }
+
   return (
     <>
       <h2 className="title">Top Stream Games</h2>

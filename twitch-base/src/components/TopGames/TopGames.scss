@@ -6,7 +6,7 @@
   
     &-item {
       height: 180px;
-      width: 100px;
+      width: 99px;
       margin: 15px;
      
       img {
@@ -28,4 +28,18 @@
       }
 
     }
+}
+
+.top-stream-and-clips-wrapper {
+  width: 100%;
+  display: flex;
+
+  .top-streams-container,.top-clips-container {
+      width: 50vw;
+  }
+
+  .top-clips-container {
+    padding-left: 50px;
+    display: inline;
+  }
 }
