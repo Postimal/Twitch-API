@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { TwitchContext } from '../../contexts/TwitchContext';
 import './StreamList.scss';
 
+
  const StreamList = ({streams, length}) => {
+     const {dispatch, getUserData} = useContext(TwitchContext);
     return (
             <div className="top-streams-container">
                 {length?
                 (
                     streams.slice(0,8).map(stream => (
                 <Link
-                    to={`/streams/${stream.id}`}
+                    to={`/channel/${stream.user_id}`}
                     className="top-streams-container-item"
                     key={stream.id}
+                    onClick={ ()=> getUserData(stream.user_id)}
+                    // onClick={ ()=> dispatch({type:'FETCH_USER_DATA', id:stream.user_id})}
                 >
                     <img
                     className="top-streams-container-item__img"
@@ -36,7 +41,7 @@ import './StreamList.scss';
                 ):
                 (
                     streams.map(stream => (
-                <Link
+                <div
                     to={`/streams/${stream.id}`}
                     className="top-streams-container-item"
                     key={stream.id}
@@ -58,7 +63,7 @@ import './StreamList.scss';
                     <div className="top-streams-container-item__live">
                     {stream.type}
                     </div>
-                </Link>
+                </div>
                 ))
                 )}
                 

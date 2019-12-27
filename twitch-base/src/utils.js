@@ -10,6 +10,11 @@ export const getThumbnail = (arr) => arr.map(stream => {
     return stream.thumbnail_url = newURL;
 })
 
+export const getThumbnailURL = (arr) => arr.map(video => {
+    let newURL = video.thumbnail_url.replace('%{width}','350').replace('%{height}','200')
+    return video.thumbnail_url = newURL;
+})
+
 
 
 

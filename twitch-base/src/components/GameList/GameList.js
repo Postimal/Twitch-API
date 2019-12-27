@@ -8,7 +8,6 @@ const GameList = ({games}) => {
   
     return (
         <div className="top-games-container">
-          {console.log(games)}
         {games.slice(0, 9).map(game => (
           <Link
             to={`./top-games`}

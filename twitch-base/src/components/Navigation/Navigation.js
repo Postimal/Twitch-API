@@ -15,7 +15,7 @@ export default function Navigation() {
                 <NavLink to={'./top-games'} className="nav-container-links__item">
                 Top Games
                 </NavLink>
-                <NavLink to={'./profile'} className="nav-container-links__item">
+                <NavLink to={'./channel/:id'} className="nav-container-links__item">
                 User
                 </NavLink>
             </nav>

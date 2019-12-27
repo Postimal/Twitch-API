@@ -1,8 +1,11 @@
 @import "./../../styles/variables";
+@import "../../styles/reset";
+
+
 
 body {
   background: linear-gradient(165deg, #251431 0%, #161130 22%);
-  color: #666;
+  color: $secondary-font-color;
   font-family: $primary-font;
   width: 90vw;
   margin: 0 auto;
@@ -34,7 +37,7 @@ body {
     width: 150px;
     margin: 20px;
     background: rgb(103, 240, 103);
-    border: 0.7px solid #42a5f5;
+    border: 1px solid #42a5f5;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     text-decoration: none;

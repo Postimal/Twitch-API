@@ -6,7 +6,7 @@
   
     &-item {
       height: 180px;
-      width: 99px;
+      width: 98.5px;
       margin: 15px;
      
       img {
@@ -34,8 +34,11 @@
   width: 100%;
   display: flex;
 
-  .top-streams-container,.top-clips-container {
-      width: 50vw;
+  .top-streams-container {
+     width: 65vw;
+  }
+  .top-clips-container {
+      width: 35vw;
   }
 
   .top-clips-container {

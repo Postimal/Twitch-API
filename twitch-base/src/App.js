@@ -5,6 +5,7 @@ import HomeHeader from "./components/HomeHeader/HomeHeader";
 import Navigation from "./components/Navigation/Navigation";
 import TopStreams from "./components/TopStreams/TopStreams";
 import TopGames from './components/TopGames/TopGames';
+import Channel from './components/Channel/Channel';
 import Footer from "./components/Footer/Footer";
 import NoMatch from './components/NoMatch/NoMatch';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -19,7 +20,7 @@ function App() {
               <Route exact path="/" component={HomeHeader} />
               <Route path="/top-streams" component={TopStreams} />
               <Route path="/top-games" component={TopGames} />
-              {/* <Route path="/channel/:id" component={Channel} /> */}
+              <Route path="/channel/:id" component={Channel} />
               <Route component={NoMatch} />
           </Switch>
           <Footer />
