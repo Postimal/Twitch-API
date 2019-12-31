@@ -12,11 +12,12 @@ import './StreamList.scss';
                 (
                     streams.slice(0,8).map(stream => (
                 <Link
-                    to={`/channel/${stream.user_id}`}
+                    to={`/channel`}
                     className="top-streams-container-item"
                     key={stream.id}
                     onClick={ ()=> getUserData(stream.user_id)}
                     // onClick={ ()=> dispatch({type:'FETCH_USER_DATA', id:stream.user_id})}
+                    //pokombinowac z tym routingeiem bo coś jest nie tak na tej stronie sie psuje
                 >
                     <img
                     className="top-streams-container-item__img"
@@ -42,7 +43,7 @@ import './StreamList.scss';
                 (
                     streams.map(stream => (
                 <div
-                    to={`/streams/${stream.id}`}
+                    to={`/channel`}
                     className="top-streams-container-item"
                     key={stream.id}
                 >

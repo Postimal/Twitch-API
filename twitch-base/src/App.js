@@ -18,9 +18,9 @@ function App() {
           <Navigation />
           <Switch>
               <Route exact path="/" component={HomeHeader} />
-              <Route path="/top-streams" component={TopStreams} />
-              <Route path="/top-games" component={TopGames} />
-              <Route path="/channel/:id" component={Channel} />
+              <Route exact path="/top-streams" component={TopStreams} />
+              <Route exact path="/top-games" component={TopGames} />
+              <Route exact path="/channel/" component={Channel} />
               <Route component={NoMatch} />
           </Switch>
           <Footer />

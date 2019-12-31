@@ -34,18 +34,6 @@ const TwitchContextProvider = props => {
         const streams = await api.get(`https://api.twitch.tv/helix/streams?first=${pages}`);
         const clips = await api.get(`https://api.twitch.tv/helix/clips?game_id=${id}&first=8`);
         const choosenStreams = await api.get(`https://api.twitch.tv/helix/streams?game_id=${id}`);
-         
-
-        // https://api.twitch.tv/helix/videos?user_id=118170488
-        // https://api.twitch.tv/helix/users?id=44322889     "id": "419330868",
-            // "login": "oneesportsgg",
-            // "display_name": "oneesportsgg",
-            // "type": "",
-            // "broadcaster_type": "",
-            // "description": "The Home of Esports",
-            // "profile_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/d3a2cd0e-538c-4ad4-9b16-3ce45e38fb77-profile_image-300x300.png",
-            // "offline_image_url": "https://static-cdn.jtvnw.net/jtv_user_pictures/aceb4378-f378-4553-a6ce-0bcf84d9d1af-channel_offline_image-1920x1080.jpeg",
-            // "view_count": 2615424
 
         let gamesArray = games.data.data;
         let streamsArray = streams.data.data;
@@ -84,7 +72,7 @@ const TwitchContextProvider = props => {
         const userDetails = await api.get(`https://api.twitch.tv/helix/users?id=${ID}`);
         const userVideos = await api.get(`https://api.twitch.tv/helix/videos?user_id=${ID}`);
 
-        let userVideosArray = userVideos.data.data;
+        let userVideosArray = userVideos.data.data.slice(1,12);
 
           // eslint-disable-next-line
         let certainVideosArrayWithCertainImageSize = getThumbnailURL(userVideosArray);
