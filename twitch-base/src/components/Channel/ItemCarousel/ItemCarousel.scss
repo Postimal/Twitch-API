@@ -1,6 +1,6 @@
 @import '../../../styles/carousel';
 .carousel-container {
-    padding: 2rem 5vw;
+    padding: 1rem 1.5vw;
   
     // carousel-container__separator
     &__separator {
@@ -10,7 +10,7 @@
     }
   
     .swiper-container {
-      height: 360px;
+      height: 340px;
       width: 100%;
   
       // swiper-container__title
@@ -31,9 +31,9 @@
         text-decoration: none;
         width: 300px;
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
+        cursor: pointer;
   
         // swiper-slide__image
         &__image {
@@ -46,8 +46,21 @@
         &__title {
         //   color: $secondary-font-color;
           font-size: .9rem;
-          margin: 5px 0 0;
+          margin: 15px 0 0;
           width: 80%;
+          padding:  0 2rem;
+        }
+
+        &__views {
+          position: absolute;
+          top: 5px;
+          color: #eee;
+          background-color: rgba(34, 21, 21, 0.726);
+          padding: 2px
+        }
+
+        &__duration {
+          padding-top: 5px;
         }
   
   
@@ -78,7 +91,7 @@
           text-align: left;
   
           &__title {
-            text-align: left;
+            text-align: center;
           }
   
          
@@ -97,7 +110,7 @@
           text-align: left;
   
           &__title {
-            text-align: left;
+            text-align: center;
           }
         }
       }

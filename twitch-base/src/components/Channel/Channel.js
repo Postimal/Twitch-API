@@ -1,10 +1,12 @@
-import React, { Compontent, useContext, useEffect} from 'react';
+import React, { useContext, useEffect} from 'react';
 import { TwitchContext } from '../../contexts/TwitchContext';
 import Swiper from 'swiper';
 import ItemCarousel from './ItemCarousel/ItemCarousel';
+import './Channel.scss';
+import ChannelPopularStream from './ChannelPopularStream/ChannelPopularStream';
 
 const Channel = () => {
-  const {handleChangeStreamID,  userDetails, userVideos, isLoading} = useContext(TwitchContext);
+  const { userDetails, userVideos, isLoading} = useContext(TwitchContext);
 
   useEffect(() => {
 
@@ -15,12 +17,15 @@ const Channel = () => {
 
   const slider = new Swiper(sliderEl, {
     init: true,
-    slidesPerView: 5,
+    slidesPerView: 4,
     loop: true,
     spaceBetween: 10,
     observer: true,
 
     breakpoints: {
+      1560: {
+        slidesPerView: 4
+      },
       1145: {
         slidesPerView: 3
       },
@@ -30,7 +35,7 @@ const Channel = () => {
       468: {
         slidesPerView: 1
       },
-      300: {
+      320: {
         slidesPerView: 1
       }
     },
@@ -47,6 +52,15 @@ const Channel = () => {
   });
   })
 
+  const getMostViewedStream = () => {
+    const arrayWithStreamViews = userVideos.map(video => video.view_count);
+    const maxWatchedStream = Math.max(...arrayWithStreamViews);
+    const indexOfmaxWatchedStream = arrayWithStreamViews.indexOf(maxWatchedStream);
+    return indexOfmaxWatchedStream
+  }
+
+  const mostPopularStream = getMostViewedStream(userVideos)
+
 
 
     if (isLoading) {
@@ -54,47 +68,27 @@ const Channel = () => {
     }
 
     return (
-        <div className="channel-container">
-            Welcome in <strong>{userDetails[0].display_name}</strong> channel
-          <div
-            className="channel-container-profile"
-          >
-            <img
-              className="channel-container-profile__img"
-              src={userDetails.profile_image_url}
-              alt="game"
-            />
-            <div className="channel-container-profile__name">{userDetails.display_name}</div>
+        <section className="channel-container">
+          <div className="channel-container-profile">
+            <div className="channel-container-profile-info">
+              <img
+                className="channel-container-profile-info__image"
+                src={userDetails[0].profile_image_url}
+                alt="game"
+              />
+              <div className="channel-container-profile-info-box">
+                <div className="channel-container-profile-info-box__name">Welcome in <strong>{userDetails[0].display_name}</strong> channel!</div>
+                <div className="channel-container-profile-info-box__views">Total views: {userDetails[0].view_count}</div>
+                <div className="channel-container-profile-info-box__highlights">{userDetails[0].display_name} most popular stream <span className='float-right'>>>></span></div>
+              </div>
+            </div>
+            <div className="channel-container-profile__highlights">
+                <ChannelPopularStream mostPopularStream={userVideos[mostPopularStream]} />
+              </div>
           </div>
-          {/* {userDetails.description}
-          {userVideos.map(video => (
-          <div
-            to={`./top-games`}
-            className="top-streams-container-item"
-            key={video.id}
-            // onClick={()=>handleChangeStreamID(game.id)}
-          >
-            <img
-              className="top-games-container-item__img"
-              src={video.thumbnail_url}
-              alt="game"
-            />
-            <div className="top-streams-container-item__name">
-              {video.view_count}
-            </div>
-            <div className="top-streams-container-item__title">
-              {video.title}
-            </div>
-            <div className="top-streams-container-item__viewers">
-              {video.view_count} viewers
-            </div>
-            <div className="top-streams-container-item__live">
-              {video.type}
-            </div>
-          </div>
-        ))} */}
+        <h2>{userDetails[0].display_name} Streams</h2>
         <ItemCarousel items={userVideos}/>
-      </div>
+      </section>
       
     )
 }

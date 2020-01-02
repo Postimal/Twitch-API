@@ -49,7 +49,7 @@ const TwitchContextProvider = props => {
         setGames(gamesArray);
         setStreams(streamsArray);
         setClips(clips.data.data);
-        setChoosenStreams(choosenStreamsArray);      
+        setChoosenStreams(choosenStreamsArray);
         setIsLoading(false);
   
       } catch (error) {

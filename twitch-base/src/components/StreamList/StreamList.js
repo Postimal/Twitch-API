@@ -42,10 +42,11 @@ import './StreamList.scss';
                 ):
                 (
                     streams.map(stream => (
-                <div
+                <Link
                     to={`/channel`}
                     className="top-streams-container-item"
                     key={stream.id}
+                    onClick={ ()=> getUserData(stream.user_id)}
                 >
                     <img
                     className="top-streams-container-item__img"
@@ -64,7 +65,7 @@ import './StreamList.scss';
                     <div className="top-streams-container-item__live">
                     {stream.type}
                     </div>
-                </div>
+                </Link>
                 ))
                 )}
                 

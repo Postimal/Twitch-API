@@ -11,6 +11,7 @@ import NoMatch from './components/NoMatch/NoMatch';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
+  //dorobić go back button, zrobić dobre id do channel, pozniej nawigacje na mobile plus cssy na mobile
   return (
     <Router>
       <TwitchContextProvider>

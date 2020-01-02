@@ -1,0 +1,39 @@
+.channel-container-profile{
+ display: flex;
+ justify-content: space-around;
+ padding: 3rem 4rem;
+
+ &-info {
+    display: flex;
+    margin-top: 40px;
+    box-sizing: border-box;
+    padding: 2rem;
+
+    &-box {
+        margin-top: 3px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        color:#ddd;
+
+        &__name {
+            font-size: 2rem;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        &__highlights {
+            padding-top: 20px;
+            font-size: 1.2rem;
+            .float-right {
+                padding-left: 3rem;
+            }
+        }
+    }
+    
+    &__image {
+        max-height: 200px;
+        width: auto;
+        border-radius: 50%;
+     }
+ }
+}

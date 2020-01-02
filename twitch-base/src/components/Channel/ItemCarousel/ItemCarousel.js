@@ -22,15 +22,19 @@ class ItemCarousel extends Component {
             {/* carousel item */}
             <div className="swiper-wrapper">
               {this.props.items.map((video, i) => (
-                <div key={video.id} className="swiper-slide">
+                <a key={video.id} className="swiper-slide"  href={`${video.url}`} target="_blank" rel="noopener noreferrer">
+                  <div>
                   <img
                     className="swiper-slide__image"
                     src={video.thumbnail_url}
                     alt="game"
                     />
+                    <h4 className="swiper-slide__views">{video.view_count} views</h4>
+                  </div>
                   <h3 className="swiper-slide__title">{video.title}</h3>
-                  {video.view_count} viewers
-                </div>
+                  <h4 className="swiper-slide__duration">{video.duration.replace('h','h ').replace('m', 'm ')}</h4>
+                  
+                </a>
               ))}
             </div>
 
