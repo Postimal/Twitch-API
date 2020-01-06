@@ -8,7 +8,6 @@ import GameList from "../GameList/GameList";
 
 const HomeHeader = () => {
   const { games, streams, clips, isLoading, error } = useContext(TwitchContext);
-   // eslint-disable-next-line
   const [length] = useState(8)
   
   if(isLoading) {

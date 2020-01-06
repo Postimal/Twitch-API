@@ -1,7 +1,11 @@
 .channel-container-profile{
  display: flex;
  justify-content: space-around;
- padding: 3rem 4rem;
+ padding: 2rem 3rem;
+ background: linear-gradient(180deg, rgba(35, 185, 196, 0.142) 30%, rgba(52, 238, 238, 0.242) 62%,rgba(13, 150, 204, 0.642) 92%);
+ margin: 3rem;
+ border: 2px solid;
+ border-radius: 10px;
 
  &-info {
     display: flex;

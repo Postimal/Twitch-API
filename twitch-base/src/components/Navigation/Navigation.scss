@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .nav-container {
     width:90vw;
     height: 50px;
@@ -17,6 +19,33 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
         display: inline-block;
+        letter-spacing: $normal-spacing;
+    }
+
+    &-links {
+        display: none;
+    }
+    .nav-btn {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        color: white
+    }
+    .nav-icon {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        height: 0;
+        display: none;
+        overflow: hidden;
+        transition: 0.3s;
+      
+    &.show-nav {
+        display: block;
+        height: 100px;
+      }
     }
 
     &-links__item {
@@ -35,5 +64,15 @@
         -webkit-text-fill-color: #ccc;
         }
 
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nav-btn {
+      display: none;
+    }
+
+    .nav-container-links {
+        display: block;
     }
 }

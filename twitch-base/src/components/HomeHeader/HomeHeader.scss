@@ -2,7 +2,6 @@
 @import "../../styles/reset";
 
 
-
 body {
   background: linear-gradient(165deg, #251431 0%, #161130 22%);
   color: $secondary-font-color;
@@ -14,6 +13,7 @@ body {
 .title {
   padding-left: 6vh;
   margin: 30px 0 0 0;
+  letter-spacing: $normal-spacing;
 }
 
 .separator {
@@ -50,7 +50,7 @@ body {
     &__name {
       text-align: center;
       text-transform: uppercase;
-      padding-top: 8px;
+      padding-top: 4px;
     }
   }
 
