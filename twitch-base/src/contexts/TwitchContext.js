@@ -17,12 +17,10 @@ const TwitchContextProvider = props => {
   const [userDetails, setUserDetails] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
-
   const [id, setID] = useState('32399');
 
   const [pages, dispatch] = useReducer(twitchReducer, 20);
 
-  // const [id, dispatch] = useReducer(reducer, initialState, init)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +61,6 @@ const TwitchContextProvider = props => {
 
 
   const getUserData = async(ID) => {
-    console.log(ID);
     setIsLoading(true);
    
       try {
@@ -111,7 +108,7 @@ const TwitchContextProvider = props => {
         isLoading, 
         getUserData, 
         userDetails, 
-        userVideos
+        userVideos,
       }}
     >
       {props.children}

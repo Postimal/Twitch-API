@@ -5,7 +5,7 @@ import './StreamList.scss';
 
 
  const StreamList = ({streams, length}) => {
-     const {dispatch, getUserData} = useContext(TwitchContext);
+     const { getUserData } = useContext(TwitchContext);
     return (
             <div className="top-streams-container">
                 {length?
@@ -17,7 +17,6 @@ import './StreamList.scss';
                     key={stream.id}
                     onClick={ ()=> getUserData(stream.user_id)}
                     // onClick={ ()=> dispatch({type:'FETCH_USER_DATA', id:stream.user_id})}
-                    //pokombinowac z tym routingeiem bo coś jest nie tak na tej stronie sie psuje
                 >
                     <img
                     className="top-streams-container-item__img"

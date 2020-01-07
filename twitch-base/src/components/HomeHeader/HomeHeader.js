@@ -4,6 +4,8 @@ import ClipList from "../ClipsList/ClipsList";
 import "./HomeHeader.scss";
 import StreamList from "../StreamList/StreamList";
 import GameList from "../GameList/GameList";
+import Spinner from '../Spinner/Spinner';
+
 
 
 const HomeHeader = () => {
@@ -11,7 +13,7 @@ const HomeHeader = () => {
   const [length] = useState(8)
   
   if(isLoading) {
-    return <p>Loading...</p>
+    return <Spinner />
   }
 
   if(error) {

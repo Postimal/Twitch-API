@@ -34,7 +34,7 @@ body {
   margin-bottom: 40px;
 
   &-item {
-    height: 260px;
+    min-height: 260px;
     width: 150px;
     margin: 20px;
     background: rgb(103, 240, 103);

@@ -4,6 +4,7 @@ import Swiper from 'swiper';
 import ItemCarousel from './ItemCarousel/ItemCarousel';
 import './Channel.scss';
 import ChannelPopularStream from './ChannelPopularStream/ChannelPopularStream';
+import Spinner from '../Spinner/Spinner';
 
 const Channel = () => {
   const { userDetails, userVideos, isLoading} = useContext(TwitchContext);
@@ -64,7 +65,7 @@ const Channel = () => {
 
 
     if (isLoading) {
-    return <div>{console.log(userDetails, userVideos)}ładowanie</div>
+    return <Spinner />
     }
 
     return (
@@ -79,7 +80,7 @@ const Channel = () => {
               <div className="channel-container-profile-info-box">
                 <div className="channel-container-profile-info-box__name">Welcome in <strong>{userDetails[0].display_name}</strong> channel!</div>
                 <div className="channel-container-profile-info-box__views">Total views: {userDetails[0].view_count}</div>
-                <div className="channel-container-profile-info-box__highlights">{userDetails[0].display_name} most popular stream <span className='float-right'>>>></span></div>
+                <div className="channel-container-profile-info-box__highlights">{userDetails[0].display_name} most popular stream</div>
               </div>
             </div>
             <div className="channel-container-profile__highlights">

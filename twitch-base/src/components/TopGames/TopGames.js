@@ -3,13 +3,13 @@ import { TwitchContext, } from "../../contexts/TwitchContext";
 import './TopGames.scss'
 import StreamList from '../StreamList/StreamList';
 import ClipList from '../ClipsList/ClipsList';
+import Spinner from '../Spinner/Spinner';
 
 
 const TopGames = () => {
-  const {games, choosenStreams, clips, handleChangeStreamID,id} = useContext(TwitchContext)
+  const { games, choosenStreams, clips, handleChangeStreamID,id, isLoading } = useContext(TwitchContext)
 
   const findGameName = games.find(game => game.id === id)
-   
     return (
         <div className="games-component">
             <h2 className="title">Most Popular Games</h2>
@@ -30,11 +30,15 @@ const TopGames = () => {
                 ))}
             </div>
                 <h3 className="title">Streams and Top Clips for <br></br><br></br> {findGameName? findGameName.name.toUpperCase(): null}{' '}({choosenStreams.length})</h3>
-            <div className="top-stream-and-clips-wrapper">
+                {isLoading ?
+                (<div><Spinner/></div>)
+                :
+                (
+                <div className="top-stream-and-clips-wrapper">
                 <StreamList streams={choosenStreams}/>
                 <ClipList clips={clips} height={'300'} width={'500'}/>
-            </div>
-           
+                </div>
+                )}
         </div>
     )
 }

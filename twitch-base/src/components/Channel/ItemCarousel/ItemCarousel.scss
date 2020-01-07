@@ -6,7 +6,7 @@
     &__separator {
       background-image: radial-gradient(circle, rgba(219, 69, 69, 0.61) 0%, rgba(255, 255, 255, 0) 90%);
       border: none;
-      height: 4px;
+      height: 2px;
     }
   
     .swiper-container {
@@ -15,7 +15,6 @@
   
       // swiper-container__title
       &__title {
-        // color: $primary-font-color;
         font-size: 1.2rem;
         font-weight: bold;
         letter-spacing: .4rem;
@@ -44,7 +43,6 @@
   
         // swiper-slide__title
         &__title {
-        //   color: $secondary-font-color;
           font-size: .9rem;
           margin: 15px 0 0;
           width: 80%;
