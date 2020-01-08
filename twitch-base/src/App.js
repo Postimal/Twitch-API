@@ -18,7 +18,7 @@ function App() {
         <ScrollToTop >
           <Navigation />
           <Switch>
-              <Route exact path="/" component={HomeHeader} />
+              <Route exact path="/Twitch-API" component={HomeHeader} />
               <Route exact path="/top-streams" component={TopStreams} />
               <Route exact path="/top-games" component={TopGames} />
               <Route exact path="/channel/" component={Channel} />

@@ -12,7 +12,7 @@ export default function Navigation() {
 
     return (
         <header className="nav-container">
-            <Link to={'./'}>
+            <Link to={'/Twitch-API'}>
               <h1 className="nav-container-app-name">Twitch ReactBoard</h1>
             </Link>
             <button 
@@ -34,7 +34,7 @@ export default function Navigation() {
                   Top Games
                 </NavLink>
                 <NavLink 
-                  to={'/'} 
+                  to={'/Twitch-API'} 
                   className="nav-container-links__item">
                   Home
                 </NavLink>
@@ -44,7 +44,7 @@ export default function Navigation() {
               className={isOpen?'nav-links show-nav':'nav-links'}>
                 <li className='nav-links__item'>
                   <Link 
-                    to='/'>
+                    to='/Twitch-API'>
                     Home
                   </Link>
                 </li>
