@@ -12,7 +12,7 @@ export default function Navigation() {
 
     return (
         <header className="nav-container">
-            <Link to={'/Twitch-API'}>
+            <Link to={'./'}>
               <h1 className="nav-container-app-name">Twitch ReactBoard</h1>
             </Link>
             <button 
@@ -24,17 +24,17 @@ export default function Navigation() {
             </button>
             <nav className="nav-container-links" >
                 <NavLink 
-                  to={'/Twitch-API/top-streams'} 
+                  to={'/top-streams'} 
                   className="nav-container-links__item">
                   Top Streams
                 </NavLink>
                 <NavLink 
-                  to={'/Twitch-API/top-games'} 
+                  to={'/top-games'} 
                   className="nav-container-links__item">
                   Top Games
                 </NavLink>
                 <NavLink 
-                  to={'/Twitch-API/'} 
+                  to={'/'} 
                   className="nav-container-links__item">
                   Home
                 </NavLink>
@@ -44,21 +44,21 @@ export default function Navigation() {
               className={isOpen?'nav-links show-nav':'nav-links'}>
                 <li className='nav-links__item'>
                   <Link 
-                    to='/Twitch-API'>
+                    to='/'>
                     Home
                   </Link>
                 </li>
                 <hr className="carousel-container__separator" />
                 <li className='nav-links__item'>
                     <Link 
-                      to='/Twitch-API/top-streams'>
+                      to='/top-streams'>
                       Top Streams
                     </Link>
                 </li>
                 <hr className="carousel-container__separator" />
                 <li className='nav-links__item'>
                     <Link 
-                      to='/Twitch-API/top-games'>
+                      to='/top-games'>
                       Top Games
                     </Link>
                 </li>     

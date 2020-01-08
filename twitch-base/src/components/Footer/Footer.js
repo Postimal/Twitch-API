@@ -8,17 +8,22 @@ const Footer = () => {
             <footer className="footer-container">
                 <div className="footer-container-header">
                     <ul className="footer-container-header__1column">
-                        <Link className="column_link" to={'/Twitch-API'}>
+                        <Link className="column_link" to={'/'}>
                         <li>
                             HOME
                         </li>
                         </Link>
-                        <Link className="column_link" to={'/Twitch-API/top-streams'}>
+                        <Link className="column_link" to={'/profile'}>
+                        <li>
+                            USER
+                        </li>
+                        </Link>
+                        <Link className="column_link" to={'/top-streams'}>
                         <li>
                             TOP STREAMS
                         </li>
                         </Link>
-                        <Link className="column_link" to={'/Twitch-API/top-games'}>
+                        <Link className="column_link" to={'/top-games'}>
                         <li>
                             TOP GAMES
                         </li>
