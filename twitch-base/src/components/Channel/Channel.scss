@@ -38,3 +38,38 @@
      }
  }
 }
+
+@media only screen and (max-width: 1024px) { 
+    .channel-container-profile {
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem 0;
+
+        &-info {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+
+            &-box {
+                text-align: center;
+            }
+        } 
+    }
+    .channel-container-profile__highlights {
+        .top-streams-container-item {
+            width: 250px;
+            margin: 30px;
+            border: none;
+            opacity: 0.9;
+
+         &__viewers {
+             bottom: 60px;
+         }
+    
+         &__img {
+             width: 250px;
+         }
+        }
+    }
+}

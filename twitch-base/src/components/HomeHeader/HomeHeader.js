@@ -1,16 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { TwitchContext } from "../../contexts/TwitchContext";
 import ClipList from "../ClipsList/ClipsList";
 import "./HomeHeader.scss";
 import StreamList from "../StreamList/StreamList";
 import GameList from "../GameList/GameList";
 import Spinner from '../Spinner/Spinner';
+import Title from "../Title/Title";
 
 
 
 const HomeHeader = () => {
   const { games, streams, clips, isLoading, error } = useContext(TwitchContext);
-  const [length] = useState(8)
   
   if(isLoading) {
     return <Spinner />
@@ -22,13 +22,13 @@ const HomeHeader = () => {
 
   return (
     <>
-      <h2 className="title">Top Stream Games</h2>
+      <Title title='Top Stream Games'/>
       <GameList games={games}/>
       <hr className="separator" />
-      <h2 className="title">Most Popular Streams</h2>
-      <StreamList streams={streams} length={length}/>
+      <Title title='Most Popular Streams'/>
+      <StreamList streams={streams} length='10'/>
       <hr className="separator" />
-      <h2 className="title">Most Popular Clips</h2>
+      <Title title='Most Popular Clips'/>
       <ClipList clips={clips} />
     </>
   );

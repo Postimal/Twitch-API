@@ -3,7 +3,7 @@
 .nav-container {
     height: 50px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0;
     display:flex;
     justify-content: space-between;
     align-items:center;
@@ -22,7 +22,8 @@
     }
 
     &-app-name {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        padding-left: 10px;
     }
 
     &-links {
@@ -43,7 +44,6 @@
 
     .nav-links {
         position: absolute;
-        width: 88%;
         transform: translateY(-150%);
         opacity: 0;
         overflow: hidden;
@@ -52,6 +52,7 @@
         top: 60px;
         z-index: 9;
         border-radius: 20px;
+        width: 90vw;
     
     &__item {
         text-align: center;
@@ -102,17 +103,23 @@
 }
 
 @media screen and (min-width: 768px) {
-    .nav-container-app-name {
-        font-size: 2rem;
+    .nav-container {
+        padding: 0 10px;
+
+        &-app-name {
+            font-size: 2rem;
+            padding-left: 0;
+        }
+
+        &-links {
+            display: block;
+        }
     }
+   
     .nav-btn {
       display: none;
     }
 
-    .nav-container-links {
-        display: block;
-    }
-      
     .nav-container .nav-links.show-nav {
         display: none;
     }

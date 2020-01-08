@@ -15,7 +15,7 @@ const Channel = () => {
       if (!sliderEl) {
         return;
       }
-
+  // eslint-disable-next-line
   const slider = new Swiper(sliderEl, {
     init: true,
     slidesPerView: 4,

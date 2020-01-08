@@ -85,10 +85,6 @@ const TwitchContextProvider = props => {
       }
   }
 
-  // changed it to work with using useReducer and dispatching an action
-  // const fetchMoreItems = () => {   
-  //   setPages(pages + 8)
-  // }
 
   const handleChangeStreamID = (id) => {
     setID(id)

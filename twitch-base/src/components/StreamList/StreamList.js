@@ -10,13 +10,12 @@ import './StreamList.scss';
             <div className="top-streams-container">
                 {length?
                 (
-                    streams.slice(0,8).map(stream => (
+                    streams.slice(0,Number(length)).map(stream => (
                 <Link
                     to={`/channel`}
                     className="top-streams-container-item"
                     key={stream.id}
                     onClick={ ()=> getUserData(stream.user_id)}
-                    // onClick={ ()=> dispatch({type:'FETCH_USER_DATA', id:stream.user_id})}
                 >
                     <img
                     className="top-streams-container-item__img"
