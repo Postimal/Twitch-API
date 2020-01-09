@@ -62,7 +62,7 @@ const Channel = () => {
 
   const mostPopularStream = getMostViewedStream(userVideos)
 
-
+ 
 
     if (isLoading) {
     return <Spinner />
@@ -79,8 +79,10 @@ const Channel = () => {
               />
               <div className="channel-container-profile-info-box">
                 <div className="channel-container-profile-info-box__name">Welcome in <strong>{userDetails[0].display_name}</strong> channel!</div>
-                <div className="channel-container-profile-info-box__views">Total views: {userDetails[0].view_count}</div>
-                <div className="channel-container-profile-info-box__highlights">{userDetails[0].display_name} most popular stream</div>
+                <div className="channel-container-profile-info-box__live">Click For Live Stream <a className='link' href={`https://www.twitch.tv/${userDetails[0].display_name}`} target='_blank' rel='noopener noreferrer'>TWITCH LIVE HERE!</a></div>
+                <hr className="carousel-container__separator" style={{margin:'10px 0'}}/>
+                <div className="channel-container-profile-info-box__views">Total views: {userDetails[0].view_count.toLocaleString('en')}</div>
+                <div className="channel-container-profile-info-box__highlights">Most Popular Stream</div>
               </div>
             </div>
             <div className="channel-container-profile__highlights">

@@ -29,7 +29,7 @@ import './StreamList.scss';
                     {stream.user_name}
                     </div>
                     <div className="top-streams-container-item__viewers">
-                    {stream.viewer_count} viewers
+                    {stream.viewer_count.toLocaleString('en')} viewers
                     </div>
                     <div className="top-streams-container-item__live">
                     {stream.type}
@@ -58,7 +58,7 @@ import './StreamList.scss';
                     {stream.user_name}
                     </div>
                     <div className="top-streams-container-item__viewers">
-                    {stream.viewer_count} viewers
+                    {stream.viewer_count.toLocaleString('en')} viewers
                     </div>
                     <div className="top-streams-container-item__live">
                     {stream.type}

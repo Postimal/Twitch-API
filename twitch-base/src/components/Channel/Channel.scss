@@ -1,8 +1,10 @@
+@import '../../styles/variables';
+
 .channel-container-profile{
  display: flex;
  justify-content: space-around;
  padding: 2rem 3rem;
- background: linear-gradient(180deg, rgba(35, 185, 196, 0.142) 30%, rgba(52, 238, 238, 0.242) 62%,rgba(13, 150, 204, 0.642) 92%);
+ background: linear-gradient(180deg, rgba(35, 185, 196, 0.142) 30%, rgba(52, 238, 238, 0.242) 72%,rgba(13, 150, 204, 0.642) 92%);
  margin: 3rem;
  border: 2px solid;
  border-radius: 10px;
@@ -25,8 +27,23 @@
             padding-bottom: 20px;
         }
 
+        &__live {
+            line-height: 25px;
+
+            .link{
+                margin: 0;
+                background: linear-gradient(150deg, $gold-color 10%, $green-color 32%, $red-color 92%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+                font-weight: bold;
+            }
+        }
+        
+
         &__highlights {
-            padding-top: 20px;
+            padding-top: 30px;
             font-size: 1.2rem;
         }
     }
@@ -39,7 +56,7 @@
  }
 }
 
-@media only screen and (max-width: 1024px) { 
+@media only screen and (max-width: 1124px) { 
     .channel-container-profile {
         flex-direction: column;
         align-items: center;
@@ -59,7 +76,7 @@
     .channel-container-profile__highlights {
         .top-streams-container-item {
             width: 250px;
-            margin: 30px;
+            margin: 0 30px 30px;
             border: none;
             opacity: 0.9;
 
