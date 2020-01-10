@@ -10,7 +10,7 @@ const GameList = ({games}) => {
         <div className="top-games-container">
         {games.slice(0, 9).map(game => (
           <Link
-            to={`./top-games`}
+            to={`/top-games`}
             className="top-games-container-item"
             key={game.id}
             onClick={()=>handleChangeStreamID(game.id)}
