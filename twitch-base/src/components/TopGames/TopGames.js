@@ -10,12 +10,19 @@ const TopGames = () => {
     games,
     choosenStreams,
     clips,
-    handleChangeStreamID,
     id,
-    isLoading
+    isLoading,
+    dispatch
   } = useContext(TwitchContext);
 
+
+  function setGameID(id){
+    dispatch({type:'GAME_ID', payload: id})
+
+  }
+
   const findGameName = games.find(game => game.id === id);
+
   return (
     <div className="games-component">
       <h2 className="title">Most Popular Games</h2>
@@ -28,7 +35,7 @@ const TopGames = () => {
                 : "top-games-container-item"
             }
             key={game.id}
-            onClick={() => handleChangeStreamID(game.id)}
+            onClick={() => setGameID(game.id)}
           >
             <img
               className="top-games-container-item__img"

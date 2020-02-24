@@ -12,7 +12,6 @@ const TwitchContextProvider = props => {
   const [clips, setClips] = useState([]);
   const [choosenStreams, setChoosenStreams] = useState([]);
 
-  const [userID, setUserID] = useState("");
   const [userVideos, setUserVideos] = useState([]);
   const [userDetails, setUserDetails] = useState([]);
 
@@ -28,6 +27,7 @@ const TwitchContextProvider = props => {
   };
 
   const [idAndPages, dispatch] = useReducer(twitchReducer, dataInit);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,7 +75,6 @@ const TwitchContextProvider = props => {
     setIsLoading(true);
 
     try {
-      // setUserID(ID);
 
       const userDetails = await api.get(
         `https://api.twitch.tv/helix/users?id=${ID}`
