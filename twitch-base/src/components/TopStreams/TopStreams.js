@@ -7,6 +7,11 @@ import Spinner from '../Spinner/Spinner';
 
 const TopStreams = () => {
     const { streams, dispatch } = useContext(TwitchContext);
+
+    function addMoreItems(){
+        dispatch({type:'FETCH_MORE_ITEMS', payload: 8})
+    }
+
     return (
         <div>
             <h2 className="title">{streams.length} Most Popular Streams</h2>
@@ -14,10 +19,10 @@ const TopStreams = () => {
             (<Spinner />) :
             (<>
              <StreamList streams={streams}/>
-            <button className="load-more-button" onClick={() => dispatch({type:'FETCH_MORE_ITEMS'})}>Load more</button>
+            <button className="load-more-button" onClick={() =>addMoreItems()}>Load more</button>
             </>)
             }
-           
+
         </div>
     )
 }
