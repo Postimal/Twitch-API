@@ -1,49 +1,33 @@
-import React, { createContext, useEffect, useState, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { twitchReducer } from "../reducers/twitchReducer";
 import api from "../api";
-import { getImage, getThumbnail, getThumbnailURL } from "../utils";
+import { getImage, getThumbnail, getThumbnailURL, dataInit } from "../utils";
 
 export const TwitchContext = createContext();
 
 const TwitchContextProvider = props => {
-  const [games, setGames] = useState([]);
-  const [error, setError] = useState("");
-  const [streams, setStreams] = useState([]);
-  const [clips, setClips] = useState([]);
-  const [choosenStreams, setChoosenStreams] = useState([]);
+  const [store, dispatch] = useReducer(twitchReducer, dataInit);
 
-  const [userVideos, setUserVideos] = useState([]);
-  const [userDetails, setUserDetails] = useState([]);
-
-  const [isLoading, setIsLoading] = useState(true);
-  // const [id, setID] = useState("32399");
-  // const [id, dispatch] = useReducer(twitchReducer, "32399");
-
-  // const [pages, dispatch] = useReducer(twitchReducer, 20);
-
-  const dataInit = {
-    id: "32399",
-    pages: 20
-  };
-
-  const [idAndPages, dispatch] = useReducer(twitchReducer, dataInit);
-
+  const {
+    id,
+    pages,
+    games,
+    streams,
+    clips,
+    choosenStreams,
+    error,
+    isLoading,
+    userVideos,
+    userDetails
+  } = store;
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
-
       try {
         const games = await api.get("https://api.twitch.tv/helix/games/top");
-        const streams = await api.get(
-          `https://api.twitch.tv/helix/streams?first=${idAndPages.pages}`
-        );
-        const clips = await api.get(
-          `https://api.twitch.tv/helix/clips?game_id=${idAndPages.id}&first=8`
-        );
-        const choosenStreams = await api.get(
-          `https://api.twitch.tv/helix/streams?game_id=${idAndPages.id}`
-        );
+        const streams = await api.get(`https://api.twitch.tv/helix/streams?first=${pages}`);
+        const clips = await api.get(`https://api.twitch.tv/helix/clips?game_id=${id}&first=8`);
+        const choosenStreams = await api.get(`https://api.twitch.tv/helix/streams?game_id=${id}`);
 
         let gamesArray = games.data.data;
         let streamsArray = streams.data.data;
@@ -58,53 +42,40 @@ const TwitchContextProvider = props => {
           choosenStreamsArray
         );
 
-        setGames(gamesArray);
-        setStreams(streamsArray);
-        setClips(clips.data.data);
-        setChoosenStreams(choosenStreamsArray);
-        setIsLoading(false);
+        dispatch({ type: "GET_GAMES", payload: gamesArray });
+        dispatch({ type: "GET_STREAMS", payload: streamsArray });
+        dispatch({ type: "GET_CLIPS", payload: clips.data.data });
+        dispatch({ type: "GET_CHOOSEN_STREAMS", payload: choosenStreamsArray });
+        dispatch({ type: "FINISH_LOADING" });
       } catch (error) {
-        setIsLoading(false);
-        setError(error.message);
+        dispatch({ type: "FINISH_LOADING" });
+        dispatch({ type: "SET_ERROR", payload: error.message });
       }
     };
     fetchData();
-  }, [idAndPages]);
+  }, [id, pages]);
 
   const getUserData = async ID => {
-    setIsLoading(true);
+    dispatch({type:'FETCHING_DATA'})
 
     try {
-
-      const userDetails = await api.get(
-        `https://api.twitch.tv/helix/users?id=${ID}`
-      );
-      const userVideos = await api.get(
-        `https://api.twitch.tv/helix/videos?user_id=${ID}`
-      );
+      const userDetails = await api.get(`https://api.twitch.tv/helix/users?id=${ID}`);
+      const userVideos = await api.get(`https://api.twitch.tv/helix/videos?user_id=${ID}`);
 
       let userVideosArray = userVideos.data.data.slice(1, 12);
-
       // eslint-disable-next-line
       let certainVideosArrayWithCertainImageSize = getThumbnailURL(
         userVideosArray
       );
 
-      setUserDetails(userDetails.data.data);
-      setUserVideos(userVideosArray);
-      setIsLoading(false);
+      dispatch({type:"GET_USER_DETAILS", payload: userDetails.data.data})
+      dispatch({type:"GET_USER_VIDS", payload: userVideosArray})
+      dispatch({ type: "FINISH_LOADING" });
     } catch (error) {
-      setIsLoading(false);
-      setError(error.message);
+      dispatch({ type: "FINISH_LOADING" });
+      dispatch({ type: "SET_ERROR", payload: error.message });
     }
   };
-
-  const handleChangeStreamID = id => {
-    // setID(id);
-    dispatch(id)
-  };
-
-  const { id, pages } = idAndPages;
 
   return (
     <TwitchContext.Provider
@@ -116,7 +87,6 @@ const TwitchContextProvider = props => {
         error,
         choosenStreams,
         dispatch,
-        handleChangeStreamID,
         id,
         isLoading,
         getUserData,
